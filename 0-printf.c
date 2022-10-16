@@ -21,13 +21,11 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '\0')
-			{
-				print_buf(buffer, ibuf), free(buffer), va_end(arguments);
+			{	print_buf(buffer, ibuf), free(buffer), va_end(arguments);
 				return (-1);
 			}
 			else
-			{
-				function = get_print_func(format, i + 1);
+			{	function = get_print_func(format, i + 1);
 				if (function == NULL)
 				{
 					if (format[i + 1] == ' ' && !format[i + 2])
@@ -39,8 +37,7 @@ int _printf(const char *format, ...)
 					len += function(arguments, buffer, ibuf);
 					i += ev_print_func(format, i + 1);
 				}
-			}
-			i++;
+			} i++;
 		}
 		else
 			handl_buf(buffer, format[i], ibuf), len++;
